@@ -1,0 +1,30 @@
+{
+    "bankAuditApp": {
+        "localRate" : {
+            "home": {
+                "title": "Local Rates",
+                "createLabel": "Создать новый Local Rate",
+                "createOrEditLabel": "Создать или отредактировать Local Rate",
+                "search": "Найти Local Rate"
+            },
+            "created": "Новый Local Rate создан с идентификатором {{ param }}",
+            "updated": "Local Rate обновлен с идентификатором {{ param }}",
+            "deleted": "Local Rate удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Local Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Local Rate"
+            },
+            "indexRate": "Index Rate",
+            "question": "Question",
+            "necessary": "Necessary",
+            "category": "Category",
+            "documentation": "Documentation",
+            "execution": "Execution",
+            "notRated": "Not Rated",
+            "rate": "Rate",
+            "groupRate": "Group Rate"
+        }
+    }
+}

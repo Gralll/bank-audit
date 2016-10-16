@@ -1,0 +1,24 @@
+{
+    "bankAuditApp": {
+        "groupDiagram" : {
+            "home": {
+                "title": "Group Diagrams",
+                "createLabel": "Create a new Group Diagram",
+                "createOrEditLabel": "Create or edit a Group Diagram",
+                "search": "Search for Group Diagram"
+            },
+            "created": "A new Group Diagram is created with identifier {{ param }}",
+            "updated": "A Group Diagram is updated with identifier {{ param }}",
+            "deleted": "A Group Diagram is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Group Diagram {{ id }}?"
+            },
+            "detail": {
+                "title": "Group Diagram"
+            },
+            "indexRate": "Index Rate",
+            "value": "Value",
+            "level": "Level"
+        }
+    }
+}

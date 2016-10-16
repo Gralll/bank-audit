@@ -1,0 +1,63 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "groupRate",
+            "otherEntityName": "groupRate",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "indexRate",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "question",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "necessary",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "CheckCategory",
+            "fieldValues": "FIRST,SECOND,THIRD,FOURTH"
+        },
+        {
+            "fieldName": "documentation",
+            "fieldType": "Documentation",
+            "fieldValues": "YES,NO,NO_RATED"
+        },
+        {
+            "fieldName": "execution",
+            "fieldType": "Execution",
+            "fieldValues": "YES,ALMOST,PARTIALLY,NO,NO_RATED"
+        },
+        {
+            "fieldName": "notRated",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "rate",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20161001150622",
+    "entityTableName": "local_rate",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

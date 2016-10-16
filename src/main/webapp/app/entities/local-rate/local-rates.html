@@ -1,0 +1,91 @@
+<div>
+    <h2 data-translate="bankAuditApp.localRate.home.title">Local Rates</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="local-rate.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="bankAuditApp.localRate.home.createLabel">
+                        Create new Local Rate
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'bankAuditApp.localRate.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="indexRate"><span data-translate="bankAuditApp.localRate.indexRate">Index Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="question"><span data-translate="bankAuditApp.localRate.question">Question</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="necessary"><span data-translate="bankAuditApp.localRate.necessary">Necessary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="category"><span data-translate="bankAuditApp.localRate.category">Category</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="documentation"><span data-translate="bankAuditApp.localRate.documentation">Documentation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="execution"><span data-translate="bankAuditApp.localRate.execution">Execution</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notRated"><span data-translate="bankAuditApp.localRate.notRated">Not Rated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rate"><span data-translate="bankAuditApp.localRate.rate">Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="groupRate.id"><span data-translate="bankAuditApp.localRate.groupRate">Group Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="localRate in vm.localRates track by localRate.id">
+                    <td><a ui-sref="local-rate-detail({id:localRate.id})">{{localRate.id}}</a></td>
+                    <td>{{localRate.indexRate}}</td>
+                    <td>{{localRate.question}}</td>
+                    <td>{{localRate.necessary}}</td>
+                    <td data-translate="{{'bankAuditApp.CheckCategory.' + localRate.category}}">{{localRate.category}}</td>
+                    <td data-translate="{{'bankAuditApp.Documentation.' + localRate.documentation}}">{{localRate.documentation}}</td>
+                    <td data-translate="{{'bankAuditApp.Execution.' + localRate.execution}}">{{localRate.execution}}</td>
+                    <td>{{localRate.notRated}}</td>
+                    <td>{{localRate.rate}}</td>
+                    <td>
+                        <a ui-sref="group-rate-detail({id:localRate.groupRate.id})">{{localRate.groupRate.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="local-rate-detail({id:localRate.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="local-rate.edit({id:localRate.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="local-rate.delete({id:localRate.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

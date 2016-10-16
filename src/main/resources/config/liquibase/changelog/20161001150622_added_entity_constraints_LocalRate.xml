@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity LocalRate.
+    -->
+    <changeSet id="20161001150622-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="group_rate_id"
+                                 baseTableName="local_rate"
+                                 constraintName="fk_local_rate_group_rate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="group_rate"/>
+
+    </changeSet>
+</databaseChangeLog>

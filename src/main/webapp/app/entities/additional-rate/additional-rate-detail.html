@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="bankAuditApp.additionalRate.detail.title">Additional Rate</span> {{vm.additionalRate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="bankAuditApp.additionalRate.ev1">Ev 1</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.ev1}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.ev2">Ev 2</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.ev2}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.ev3">Ev 3</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.ev3}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.evbptp">Evbptp</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.evbptp}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.evbitp">Evbitp</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.evbitp}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.ev1Ozpd">Ev 1 Ozpd</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.ev1Ozpd}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.ev2Ozpd">Ev 2 Ozpd</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.ev2Ozpd}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.additionalRate.evoopd">Evoopd</span></dt>
+        <dd>
+            <span>{{vm.additionalRate.evoopd}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="additional-rate-detail.edit({id:vm.additionalRate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

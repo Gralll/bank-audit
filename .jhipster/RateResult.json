@@ -1,0 +1,52 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "rateMatrix",
+            "otherEntityName": "rateMatrix",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rateResult"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "additionalRate",
+            "otherEntityName": "additionalRate",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rateResult"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "finalRate",
+            "otherEntityName": "finalRate",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rateResult"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "evDiagram",
+            "otherEntityName": "evDiagram",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rateResult"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "groupDiagram",
+            "otherEntityName": "groupDiagram",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "rateResult"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20161001150623",
+    "entityTableName": "rate_result",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

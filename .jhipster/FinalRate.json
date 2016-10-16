@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "evoopd",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev1Ozpd",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "evmb",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "r",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20161001150626",
+    "entityTableName": "final_rate",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

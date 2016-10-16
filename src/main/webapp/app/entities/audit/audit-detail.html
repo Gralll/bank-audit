@@ -1,0 +1,117 @@
+<div>
+    <h2>{{vm.audit.name}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <div class="col-md-3">
+        <span style="height: 300px" class="hipster img-responsive img-rounded"></span>
+        <span style="font-size: medium" data-translate="bankAuditApp.audit.progress">Audit progress</span>
+        <div class="progress" ng-if="true">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                <span>80% Complete (success)</span>
+            </div>
+        </div>
+        <div class="progress" ng-if="false">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                <span>60% Complete</span>
+            </div>
+        </div>
+        <div class="progress" ng-if="false">
+            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                <span>40% Complete (warning)</span>
+            </div>
+        </div>
+        <div class="progress" ng-if="false">
+            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                <span>20% Complete (danger)</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="bankAuditApp.audit.name">Name</span></dt>
+            <dd>
+                <span>{{vm.audit.name}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.bank">Bank</span></dt>
+            <dd>
+                <span>{{vm.audit.bank}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.startDate">Start Date</span></dt>
+            <dd>
+                <span>{{vm.audit.startDate | date:'mediumDate'}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.endDate">End Date</span></dt>
+            <dd>
+                <span>{{vm.audit.endDate | date:'mediumDate'}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.startLevel">Start Level</span></dt>
+            <dd>
+                <span>{{vm.audit.startLevel}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.endLevel">End Level</span></dt>
+            <dd>
+                <span>{{vm.audit.endLevel}}</span>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.rateData">Rate Data</span></dt>
+            <dd>
+                <a ui-sref="rate-data-detail({id:vm.audit.rateData.id})">{{vm.audit.rateData.id}}</a>
+            </dd>
+            <dt><span data-translate="bankAuditApp.audit.result">Result</span></dt>
+            <dd>
+                <a ui-sref="rate-result-detail({id:vm.audit.result.id})">{{vm.audit.result.id}}</a>
+            </dd>
+        </dl>
+    </div>
+    <ul class="pager">
+        <li><a href="" ng-click="vm.getRates()">Оценки</a></li>
+        <li><a href="" ng-click="vm.getResults()">Результаты</a></li>
+    </ul>
+
+    <div class="panel panel-primary" ng-show="vm.isVisibleRates">
+        <div class="panel-heading" ng-click="isVisibleRateTU = !isVisibleRateTU">
+            Оценка текущего уровня информационной безопасности
+        </div>
+        <div class="panel-body" ng-show="isVisibleRateTU">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Групповая оценка</th>
+                        <th>Прогресс</th>
+                        <th>Результат</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="groupRate in vm.audit.rateData.groupRates  | filter:{category:''} | orderBy:'id'">
+                    <td><a ui-sref="group-rate-detail({id:groupRate.id})">{{groupRate.indexRate}} {{groupRate.name}}</a></td>
+                    <td>{{vm.getGroupRateProgress(groupRate)}}</td>
+                    <td>{{groupRate.rate}}</td>
+                    <!--<div ng-repeat="localRate in groupRate.localRates | orderBy:'id' ">
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                    </div>-->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+    <div ng-show="vm.isVisibleResults">
+        {{vm.audit.result.id}}
+    </div>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="audit-detail.edit({id:vm.audit.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

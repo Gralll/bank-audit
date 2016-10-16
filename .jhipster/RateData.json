@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "groupRate",
+            "otherEntityName": "groupRate",
+            "otherEntityRelationshipName": "rateData"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "progress",
+            "fieldType": "AuditProgress",
+            "fieldValues": "CREATED,STARTED,FINISHED"
+        }
+    ],
+    "changelogDate": "20161001150620",
+    "entityTableName": "rate_data",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

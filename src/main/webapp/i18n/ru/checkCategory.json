@@ -1,0 +1,11 @@
+{
+    "bankAuditApp": {
+        "CheckCategory" : {
+            "null": "",
+            "FIRST": "FIRST",
+            "SECOND": "SECOND",
+            "THIRD": "THIRD",
+            "FOURTH": "FOURTH"
+        }
+    }
+}

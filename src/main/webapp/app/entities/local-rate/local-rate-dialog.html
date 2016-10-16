@@ -1,0 +1,107 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocalRateLabel" data-translate="bankAuditApp.localRate.home.createOrEditLabel">Create or edit a Local Rate</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.localRate.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.localRate.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.indexRate" for="field_indexRate">Index Rate</label>
+            <input type="text" class="form-control" name="indexRate" id="field_indexRate"
+                    ng-model="vm.localRate.indexRate"
+                    required />
+            <div ng-show="editForm.indexRate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.indexRate.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.question" for="field_question">Question</label>
+            <input type="text" class="form-control" name="question" id="field_question"
+                    ng-model="vm.localRate.question"
+                    required />
+            <div ng-show="editForm.question.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.question.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.necessary" for="field_necessary">Necessary</label>
+            <input type="checkbox" class="form-control" name="necessary" id="field_necessary"
+                    ng-model="vm.localRate.necessary"
+                     />
+            <div ng-show="editForm.necessary.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.necessary.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.category" for="field_category">Category</label>
+            <select class="form-control" name="category" ng-model="vm.localRate.category" id="field_category">
+                <option value="FIRST" data-translate="bankAuditApp.CheckCategory.FIRST">FIRST</option>
+                <option value="SECOND" data-translate="bankAuditApp.CheckCategory.SECOND">SECOND</option>
+                <option value="THIRD" data-translate="bankAuditApp.CheckCategory.THIRD">THIRD</option>
+                <option value="FOURTH" data-translate="bankAuditApp.CheckCategory.FOURTH">FOURTH</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.documentation" for="field_documentation">Documentation</label>
+            <select class="form-control" name="documentation" ng-model="vm.localRate.documentation" id="field_documentation">
+                <option value="YES" data-translate="bankAuditApp.Documentation.YES">YES</option>
+                <option value="NO" data-translate="bankAuditApp.Documentation.NO">NO</option>
+                <option value="NO_RATED" data-translate="bankAuditApp.Documentation.NO_RATED">NO_RATED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.execution" for="field_execution">Execution</label>
+            <select class="form-control" name="execution" ng-model="vm.localRate.execution" id="field_execution">
+                <option value="YES" data-translate="bankAuditApp.Execution.YES">YES</option>
+                <option value="ALMOST" data-translate="bankAuditApp.Execution.ALMOST">ALMOST</option>
+                <option value="PARTIALLY" data-translate="bankAuditApp.Execution.PARTIALLY">PARTIALLY</option>
+                <option value="NO" data-translate="bankAuditApp.Execution.NO">NO</option>
+                <option value="NO_RATED" data-translate="bankAuditApp.Execution.NO_RATED">NO_RATED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.notRated" for="field_notRated">Not Rated</label>
+            <input type="checkbox" class="form-control" name="notRated" id="field_notRated"
+                    ng-model="vm.localRate.notRated"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.localRate.rate" for="field_rate">Rate</label>
+            <input type="number" class="form-control" name="rate" id="field_rate"
+                    ng-model="vm.localRate.rate"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="bankAuditApp.localRate.groupRate" for="field_groupRate">Group Rate</label>
+            <select class="form-control" id="field_groupRate" name="groupRate" ng-model="vm.localRate.groupRate" ng-options="groupRate as groupRate.id for groupRate in vm.grouprates track by groupRate.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

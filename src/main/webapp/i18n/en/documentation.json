@@ -1,0 +1,10 @@
+{
+    "bankAuditApp": {
+        "Documentation" : {
+            "null": "",
+            "YES": "YES",
+            "NO": "NO",
+            "NO_RATED": "NO_RATED"
+        }
+    }
+}

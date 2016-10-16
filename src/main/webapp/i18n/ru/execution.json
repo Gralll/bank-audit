@@ -1,0 +1,12 @@
+{
+    "bankAuditApp": {
+        "Execution" : {
+            "null": "",
+            "YES": "YES",
+            "ALMOST": "ALMOST",
+            "PARTIALLY": "PARTIALLY",
+            "NO": "NO",
+            "NO_RATED": "NO_RATED"
+        }
+    }
+}

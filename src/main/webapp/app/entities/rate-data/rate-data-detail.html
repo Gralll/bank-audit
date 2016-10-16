@@ -1,0 +1,23 @@
+
+<div>
+    <h2><span data-translate="bankAuditApp.rateData.detail.title">Rate Data</span> {{vm.rateData.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="bankAuditApp.rateData.progress">Progress</span></dt>
+        <dd>
+            <span data-translate="{{'bankAuditApp.AuditProgress.' + vm.rateData.progress}}">{{vm.rateData.progress}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="rate-data-detail.edit({id:vm.rateData.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

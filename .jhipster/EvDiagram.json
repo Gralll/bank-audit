@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ev1",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev2",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev3",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20161001150627",
+    "entityTableName": "ev_diagram",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

@@ -1,0 +1,56 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myRateResultLabel" data-translate="bankAuditApp.rateResult.home.createOrEditLabel">Create or edit a Rate Result</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.rateResult.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.rateResult.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="bankAuditApp.rateResult.rateMatrix" for="field_rateMatrix">Rate Matrix</label>
+            <select class="form-control" id="field_rateMatrix" name="rateMatrix" ng-model="vm.rateResult.rateMatrix" ng-options="rateMatrix as rateMatrix.id for rateMatrix in vm.ratematrices | orderBy:'id' track by rateMatrix.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="bankAuditApp.rateResult.additionalRate" for="field_additionalRate">Additional Rate</label>
+            <select class="form-control" id="field_additionalRate" name="additionalRate" ng-model="vm.rateResult.additionalRate" ng-options="additionalRate as additionalRate.id for additionalRate in vm.additionalrates | orderBy:'id' track by additionalRate.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="bankAuditApp.rateResult.finalRate" for="field_finalRate">Final Rate</label>
+            <select class="form-control" id="field_finalRate" name="finalRate" ng-model="vm.rateResult.finalRate" ng-options="finalRate as finalRate.id for finalRate in vm.finalrates | orderBy:'id' track by finalRate.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="bankAuditApp.rateResult.evDiagram" for="field_evDiagram">Ev Diagram</label>
+            <select class="form-control" id="field_evDiagram" name="evDiagram" ng-model="vm.rateResult.evDiagram" ng-options="evDiagram as evDiagram.id for evDiagram in vm.evdiagrams | orderBy:'id' track by evDiagram.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="bankAuditApp.rateResult.groupDiagram" for="field_groupDiagram">Group Diagram</label>
+            <select class="form-control" id="field_groupDiagram" name="groupDiagram" ng-model="vm.rateResult.groupDiagram" ng-options="groupDiagram as groupDiagram.id for groupDiagram in vm.groupdiagrams | orderBy:'id' track by groupDiagram.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

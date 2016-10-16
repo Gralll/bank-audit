@@ -1,0 +1,23 @@
+{
+    "bankAuditApp": {
+        "rateData" : {
+            "home": {
+                "title": "Rate Data",
+                "createLabel": "Создать новый Rate Data",
+                "createOrEditLabel": "Создать или отредактировать Rate Data",
+                "search": "Найти Rate Data"
+            },
+            "created": "Новый Rate Data создан с идентификатором {{ param }}",
+            "updated": "Rate Data обновлен с идентификатором {{ param }}",
+            "deleted": "Rate Data удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Rate Data {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate Data"
+            },
+            "progress": "Progress",
+            "groupRate": "Group Rate"
+        }
+    }
+}

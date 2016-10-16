@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="bankAuditApp.evDiagram.detail.title">Ev Diagram</span> {{vm.evDiagram.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="bankAuditApp.evDiagram.ev1">Ev 1</span></dt>
+        <dd>
+            <span>{{vm.evDiagram.ev1}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.evDiagram.ev2">Ev 2</span></dt>
+        <dd>
+            <span>{{vm.evDiagram.ev2}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.evDiagram.ev3">Ev 3</span></dt>
+        <dd>
+            <span>{{vm.evDiagram.ev3}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ev-diagram-detail.edit({id:vm.evDiagram.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

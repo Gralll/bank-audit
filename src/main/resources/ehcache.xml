@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="com.gralll.bankaudit.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.gralll.bankaudit.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.gralll.bankaudit.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.gralll.bankaudit.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.gralll.bankaudit.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    
+
+    <cache name="com.gralll.bankaudit.social.SocialUserConnection"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.gralll.bankaudit.domain.Audit"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.RateData"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.RateData.groupRates"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.GroupRate"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.GroupRate.localRates"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.LocalRate"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.RateResult"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.RateMatrix"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.AdditionalRate"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.FinalRate"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.EvDiagram"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <cache name="com.gralll.bankaudit.domain.GroupDiagram"
+                               timeToLiveSeconds="3600">
+                        </cache>
+                        
+    <!-- jhipster-needle-ehcache-add-entry -->
+</ehcache>

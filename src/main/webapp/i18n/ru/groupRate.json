@@ -1,0 +1,27 @@
+{
+    "bankAuditApp": {
+        "groupRate" : {
+            "home": {
+                "title": "Group Rates",
+                "createLabel": "Создать новый Group Rate",
+                "createOrEditLabel": "Создать или отредактировать Group Rate",
+                "search": "Найти Group Rate"
+            },
+            "created": "Новый Group Rate создан с идентификатором {{ param }}",
+            "updated": "Group Rate обновлен с идентификатором {{ param }}",
+            "deleted": "Group Rate удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Group Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Group Rate"
+            },
+            "name": "Name",
+            "indexRate": "Index Rate",
+            "category": "Category",
+            "rate": "Rate",
+            "rateData": "Rate Data",
+            "localRate": "Local Rate"
+        }
+    }
+}

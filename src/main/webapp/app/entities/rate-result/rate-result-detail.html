@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="bankAuditApp.rateResult.detail.title">Rate Result</span> {{vm.rateResult.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="bankAuditApp.rateResult.rateMatrix">Rate Matrix</span></dt>
+        <dd>
+            <a ui-sref="rate-matrix-detail({id:vm.rateResult.rateMatrix.id})">{{vm.rateResult.rateMatrix.id}}</a>
+        </dd>
+        <dt><span data-translate="bankAuditApp.rateResult.additionalRate">Additional Rate</span></dt>
+        <dd>
+            <a ui-sref="additional-rate-detail({id:vm.rateResult.additionalRate.id})">{{vm.rateResult.additionalRate.id}}</a>
+        </dd>
+        <dt><span data-translate="bankAuditApp.rateResult.finalRate">Final Rate</span></dt>
+        <dd>
+            <a ui-sref="final-rate-detail({id:vm.rateResult.finalRate.id})">{{vm.rateResult.finalRate.id}}</a>
+        </dd>
+        <dt><span data-translate="bankAuditApp.rateResult.evDiagram">Ev Diagram</span></dt>
+        <dd>
+            <a ui-sref="ev-diagram-detail({id:vm.rateResult.evDiagram.id})">{{vm.rateResult.evDiagram.id}}</a>
+        </dd>
+        <dt><span data-translate="bankAuditApp.rateResult.groupDiagram">Group Diagram</span></dt>
+        <dd>
+            <a ui-sref="group-diagram-detail({id:vm.rateResult.groupDiagram.id})">{{vm.rateResult.groupDiagram.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="rate-result-detail.edit({id:vm.rateResult.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

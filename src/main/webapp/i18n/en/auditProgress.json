@@ -1,0 +1,10 @@
+{
+    "bankAuditApp": {
+        "AuditProgress" : {
+            "null": "",
+            "CREATED": "CREATED",
+            "STARTED": "STARTED",
+            "FINISHED": "FINISHED"
+        }
+    }
+}

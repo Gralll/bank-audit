@@ -1,0 +1,26 @@
+{
+    "bankAuditApp": {
+        "rateResult" : {
+            "home": {
+                "title": "Rate Results",
+                "createLabel": "Create a new Rate Result",
+                "createOrEditLabel": "Create or edit a Rate Result",
+                "search": "Search for Rate Result"
+            },
+            "created": "A new Rate Result is created with identifier {{ param }}",
+            "updated": "A Rate Result is updated with identifier {{ param }}",
+            "deleted": "A Rate Result is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Rate Result {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate Result"
+            },
+            "rateMatrix": "Rate Matrix",
+            "additionalRate": "Additional Rate",
+            "finalRate": "Final Rate",
+            "evDiagram": "Ev Diagram",
+            "groupDiagram": "Group Diagram"
+        }
+    }
+}

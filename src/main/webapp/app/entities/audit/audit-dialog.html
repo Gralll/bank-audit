@@ -1,0 +1,98 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAuditLabel" data-translate="bankAuditApp.audit.home.createOrEditLabel">Create or edit a Audit</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.audit.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.audit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.audit.name"
+                    required ng-minlength="5" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="5">
+                    This field is required to be at least 5 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.bank" for="field_bank">Bank</label>
+            <input type="text" class="form-control" name="bank" id="field_bank"
+                    ng-model="vm.audit.bank"
+                    required />
+            <div ng-show="editForm.bank.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bank.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.startDate" for="field_startDate">Start Date</label>
+                <div class="input-group">
+                    <input id="field_startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.audit.startDate" is-open="vm.datePickerOpenStatus.startDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.endDate" for="field_endDate">End Date</label>
+                <div class="input-group">
+                    <input id="field_endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.audit.endDate" is-open="vm.datePickerOpenStatus.endDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.startLevel" for="field_startLevel">Start Level</label>
+            <input type="text" class="form-control" name="startLevel" id="field_startLevel"
+                    ng-model="vm.audit.startLevel"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="bankAuditApp.audit.endLevel" for="field_endLevel">End Level</label>
+            <input type="text" class="form-control" name="endLevel" id="field_endLevel"
+                    ng-model="vm.audit.endLevel"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="bankAuditApp.audit.rateData" for="field_rateData">Rate Data</label>
+            <select class="form-control" id="field_rateData" name="rateData" ng-model="vm.audit.rateData" ng-options="rateData as rateData.id for rateData in vm.ratedata | orderBy:'id' track by rateData.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="bankAuditApp.audit.result" for="field_result">Result</label>
+            <select class="form-control" id="field_result" name="result" ng-model="vm.audit.result" ng-options="rateResult as rateResult.id for rateResult in vm.results | orderBy:'id' track by rateResult.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

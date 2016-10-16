@@ -1,0 +1,24 @@
+{
+    "bankAuditApp": {
+        "evDiagram" : {
+            "home": {
+                "title": "Ev Diagrams",
+                "createLabel": "Create a new Ev Diagram",
+                "createOrEditLabel": "Create or edit a Ev Diagram",
+                "search": "Search for Ev Diagram"
+            },
+            "created": "A new Ev Diagram is created with identifier {{ param }}",
+            "updated": "A Ev Diagram is updated with identifier {{ param }}",
+            "deleted": "A Ev Diagram is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ev Diagram {{ id }}?"
+            },
+            "detail": {
+                "title": "Ev Diagram"
+            },
+            "ev1": "Ev 1",
+            "ev2": "Ev 2",
+            "ev3": "Ev 3"
+        }
+    }
+}

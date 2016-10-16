@@ -1,0 +1,44 @@
+    {
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ev1",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev2",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev3",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "evbptp",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "evbitp",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev1Ozpd",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "ev2Ozpd",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "evoopd",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20161001150625",
+    "entityTableName": "additional_rate",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

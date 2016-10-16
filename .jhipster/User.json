@@ -1,0 +1,10 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20161001151002",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "user",
+    "pagination": "infinite-scroll"
+}

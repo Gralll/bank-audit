@@ -1,0 +1,25 @@
+{
+    "bankAuditApp": {
+        "finalRate" : {
+            "home": {
+                "title": "Final Rates",
+                "createLabel": "Создать новый Final Rate",
+                "createOrEditLabel": "Создать или отредактировать Final Rate",
+                "search": "Найти Final Rate"
+            },
+            "created": "Новый Final Rate создан с идентификатором {{ param }}",
+            "updated": "Final Rate обновлен с идентификатором {{ param }}",
+            "deleted": "Final Rate удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Final Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Final Rate"
+            },
+            "evoopd": "Evoopd",
+            "ev1Ozpd": "Ev 1 Ozpd",
+            "evmb": "Evmb",
+            "r": "R"
+        }
+    }
+}

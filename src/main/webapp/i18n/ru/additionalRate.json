@@ -1,0 +1,29 @@
+{
+    "bankAuditApp": {
+        "additionalRate" : {
+            "home": {
+                "title": "Additional Rates",
+                "createLabel": "Создать новый Additional Rate",
+                "createOrEditLabel": "Создать или отредактировать Additional Rate",
+                "search": "Найти Additional Rate"
+            },
+            "created": "Новый Additional Rate создан с идентификатором {{ param }}",
+            "updated": "Additional Rate обновлен с идентификатором {{ param }}",
+            "deleted": "Additional Rate удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Additional Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Additional Rate"
+            },
+            "ev1": "Ev 1",
+            "ev2": "Ev 2",
+            "ev3": "Ev 3",
+            "evbptp": "Evbptp",
+            "evbitp": "Evbitp",
+            "ev1Ozpd": "Ev 1 Ozpd",
+            "ev2Ozpd": "Ev 2 Ozpd",
+            "evoopd": "Evoopd"
+        }
+    }
+}

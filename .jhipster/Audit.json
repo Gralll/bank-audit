@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "rateData",
+            "otherEntityName": "rateData",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "audit"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "result",
+            "otherEntityName": "rateResult",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "audit"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 5
+        },
+        {
+            "fieldName": "bank",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "startLevel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endLevel",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161001150619",
+    "entityTableName": "audit",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "angularSuffix": "myEntities"
+}

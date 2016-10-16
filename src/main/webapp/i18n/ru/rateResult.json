@@ -1,0 +1,26 @@
+{
+    "bankAuditApp": {
+        "rateResult" : {
+            "home": {
+                "title": "Rate Results",
+                "createLabel": "Создать новый Rate Result",
+                "createOrEditLabel": "Создать или отредактировать Rate Result",
+                "search": "Найти Rate Result"
+            },
+            "created": "Новый Rate Result создан с идентификатором {{ param }}",
+            "updated": "Rate Result обновлен с идентификатором {{ param }}",
+            "deleted": "Rate Result удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Rate Result {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate Result"
+            },
+            "rateMatrix": "Rate Matrix",
+            "additionalRate": "Additional Rate",
+            "finalRate": "Final Rate",
+            "evDiagram": "Ev Diagram",
+            "groupDiagram": "Group Diagram"
+        }
+    }
+}

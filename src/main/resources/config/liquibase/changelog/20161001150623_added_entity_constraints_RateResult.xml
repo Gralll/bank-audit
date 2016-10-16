@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity RateResult.
+    -->
+    <changeSet id="20161001150623-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="rate_matrix_id"
+                                 baseTableName="rate_result"
+                                 constraintName="fk_rate_result_rate_matrix_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rate_matrix"/>
+
+        <addForeignKeyConstraint baseColumnNames="additional_rate_id"
+                                 baseTableName="rate_result"
+                                 constraintName="fk_rate_result_additional_rate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="additional_rate"/>
+
+        <addForeignKeyConstraint baseColumnNames="final_rate_id"
+                                 baseTableName="rate_result"
+                                 constraintName="fk_rate_result_final_rate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="final_rate"/>
+
+        <addForeignKeyConstraint baseColumnNames="ev_diagram_id"
+                                 baseTableName="rate_result"
+                                 constraintName="fk_rate_result_ev_diagram_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ev_diagram"/>
+
+        <addForeignKeyConstraint baseColumnNames="group_diagram_id"
+                                 baseTableName="rate_result"
+                                 constraintName="fk_rate_result_group_diagram_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="group_diagram"/>
+
+    </changeSet>
+</databaseChangeLog>

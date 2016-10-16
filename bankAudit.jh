@@ -1,0 +1,113 @@
+entity Audit {
+	name String required minlength(5),
+	bank String required,
+	startDate LocalDate,
+    endDate LocalDate,
+    startLevel String,
+    endLevel String
+}
+
+enum AuditProgress {
+	CREATED, STARTED, FINISHED
+}
+
+entity RateData {
+	progress AuditProgress,
+}
+
+entity GroupRate {
+	name String required,
+    indexRate String required,
+    rate Double
+}
+
+enum CheckCategory {
+	FIRST, SECOND, THIRD, FOURTH
+}
+
+enum Documentation {
+	YES, NO, NO_RATED
+}
+
+enum Execution {
+	YES, ALMOST, PARTIALLY, NO, NO_RATED
+}
+
+entity LocalRate {
+	indexRate String required,
+    question String required,
+    necessary Boolean required,
+    category CheckCategory,
+    documentation Documentation,
+    execution Execution,
+    notRated Boolean,
+    rate Double
+}
+
+entity RateResult {
+	
+}
+
+entity RateMatrix {
+	indexRate String,
+    rate Double,
+    zero Integer
+}
+
+entity AdditionalRate {
+    ev1 Double,
+	ev2 Double,
+    ev3 Double,
+    evbptp Double,
+    evbitp Double,
+    ev1ozpd Double,
+    ev2ozpd Double,
+    evoopd Double,
+}
+
+entity FinalRate {
+	evoopd Double,
+    ev1ozpd Double,
+    evmb Double,
+    r Double,
+}
+
+entity EvDiagram {
+	ev1 Double,
+    ev2 Double,
+    ev3 Double
+}
+
+entity GroupDiagram {
+	indexRate String,
+    value Double,
+    level Integer
+}
+
+relationship OneToOne {
+	Audit{rateData} to RateData,
+    Audit{result} to RateResult
+}
+
+relationship OneToOne {
+	RateResult{rateMatrix} to RateMatrix,
+    RateResult{additionalRate} to AdditionalRate,
+    RateResult{finalRate} to FinalRate,
+    RateResult{EVDiagram} to EvDiagram,
+    RateResult{groupDiagram} to GroupDiagram
+}
+
+relationship OneToMany {
+	RateData{groupRate} to GroupRate
+}
+
+relationship OneToMany {
+	GroupRate{localRate} to LocalRate
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+
+service * with serviceClass except AccountType, AuditProgress, CheckCategory, Documentation, Execution
+
+angularSuffix * with myEntities

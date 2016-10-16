@@ -1,0 +1,24 @@
+{
+    "bankAuditApp": {
+        "rateMatrix" : {
+            "home": {
+                "title": "Rate Matrices",
+                "createLabel": "Create a new Rate Matrix",
+                "createOrEditLabel": "Create or edit a Rate Matrix",
+                "search": "Search for Rate Matrix"
+            },
+            "created": "A new Rate Matrix is created with identifier {{ param }}",
+            "updated": "A Rate Matrix is updated with identifier {{ param }}",
+            "deleted": "A Rate Matrix is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Rate Matrix {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate Matrix"
+            },
+            "indexRate": "Index Rate",
+            "rate": "Rate",
+            "zero": "Zero"
+        }
+    }
+}

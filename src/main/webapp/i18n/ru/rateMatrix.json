@@ -1,0 +1,24 @@
+{
+    "bankAuditApp": {
+        "rateMatrix" : {
+            "home": {
+                "title": "Rate Matrices",
+                "createLabel": "Создать новый Rate Matrix",
+                "createOrEditLabel": "Создать или отредактировать Rate Matrix",
+                "search": "Найти Rate Matrix"
+            },
+            "created": "Новый Rate Matrix создан с идентификатором {{ param }}",
+            "updated": "Rate Matrix обновлен с идентификатором {{ param }}",
+            "deleted": "Rate Matrix удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Rate Matrix {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate Matrix"
+            },
+            "indexRate": "Index Rate",
+            "rate": "Rate",
+            "zero": "Zero"
+        }
+    }
+}

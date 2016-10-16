@@ -1,0 +1,89 @@
+<div>
+    <h2 data-translate="bankAuditApp.audit.home.title">Audits</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="audit.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="bankAuditApp.audit.home.createLabel">
+                        Create new Audit
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'bankAuditApp.audit.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="name"><span data-translate="bankAuditApp.audit.name">Name</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bank"><span data-translate="bankAuditApp.audit.bank">Bank</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span data-translate="bankAuditApp.audit.startDate">Start Date</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span data-translate="bankAuditApp.audit.endDate">End Date</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startLevel"><span data-translate="bankAuditApp.audit.startLevel">Start Level</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endLevel"><span data-translate="bankAuditApp.audit.endLevel">End Level</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rateData.id"><span data-translate="bankAuditApp.audit.rateData">Rate Data</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="result.id"><span data-translate="bankAuditApp.audit.result">Result</span> <br/><span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="audit in vm.audits track by audit.id">
+                    <td><a ui-sref="audit-detail({id:audit.id})">{{audit.name}}</a></td>
+                    <td>{{audit.bank}}</td>
+                        <td>{{audit.startDate | date:'mediumDate'}}</td>
+                        <td>{{audit.endDate | date:'mediumDate'}}</td>
+                    <td>{{audit.startLevel}}</td>
+                    <td>{{audit.endLevel}}</td>
+                    <td>
+                        <a ui-sref="rate-data-detail({id:audit.rateData.id})">{{audit.rateData.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="rate-result-detail({id:audit.result.id})">{{audit.result.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="audit-detail({id:audit.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="audit.edit({id:audit.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="audit.delete({id:audit.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

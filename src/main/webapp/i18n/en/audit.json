@@ -1,0 +1,30 @@
+{
+    "bankAuditApp": {
+        "audit" : {
+            "home": {
+                "title": "Audits",
+                "createLabel": "Create a new Audit",
+                "createOrEditLabel": "Create or edit a Audit",
+                "search": "Search for Audit"
+            },
+            "created": "A new Audit is created with identifier {{ param }}",
+            "updated": "A Audit is updated with identifier {{ param }}",
+            "deleted": "A Audit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Audit {{ param }}?"
+            },
+            "detail": {
+                "title": "Audit"
+            },
+            "name": "Name",
+            "bank": "Bank",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "startLevel": "Start Level",
+            "endLevel": "End Level",
+            "rateData": "Rate Data",
+            "result": "Result",
+            "progress" : "Audit progress"
+        }
+    }
+}

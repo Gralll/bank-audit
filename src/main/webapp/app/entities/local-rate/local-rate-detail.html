@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span data-translate="bankAuditApp.localRate.detail.title">Local Rate</span> {{vm.localRate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="bankAuditApp.localRate.indexRate">Index Rate</span></dt>
+        <dd>
+            <span>{{vm.localRate.indexRate}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.question">Question</span></dt>
+        <dd>
+            <span>{{vm.localRate.question}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.necessary">Necessary</span></dt>
+        <dd>
+            <span>{{vm.localRate.necessary}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.category">Category</span></dt>
+        <dd>
+            <span data-translate="{{'bankAuditApp.CheckCategory.' + vm.localRate.category}}">{{vm.localRate.category}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.documentation">Documentation</span></dt>
+        <dd>
+            <span data-translate="{{'bankAuditApp.Documentation.' + vm.localRate.documentation}}">{{vm.localRate.documentation}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.execution">Execution</span></dt>
+        <dd>
+            <span data-translate="{{'bankAuditApp.Execution.' + vm.localRate.execution}}">{{vm.localRate.execution}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.notRated">Not Rated</span></dt>
+        <dd>
+            <span>{{vm.localRate.notRated}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.rate">Rate</span></dt>
+        <dd>
+            <span>{{vm.localRate.rate}}</span>
+        </dd>
+        <dt><span data-translate="bankAuditApp.localRate.groupRate">Group Rate</span></dt>
+        <dd>
+            <a ui-sref="group-rate-detail({id:vm.localRate.groupRate.id})">{{vm.localRate.groupRate.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="local-rate-detail.edit({id:vm.localRate.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
