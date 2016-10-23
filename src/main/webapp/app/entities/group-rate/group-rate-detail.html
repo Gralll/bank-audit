@@ -1,30 +1,83 @@
-
 <div>
-    <h2><span data-translate="bankAuditApp.groupRate.detail.title">Group Rate</span> {{vm.groupRate.id}}</h2>
+    <h2><span data-translate="bankAuditApp.groupRate.detail.title">Групповая оценка</span> {{vm.groupRate.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="bankAuditApp.groupRate.name">Name</span></dt>
+        <dt><span data-translate="bankAuditApp.groupRate.name">Название</span></dt>
         <dd>
             <span>{{vm.groupRate.name}}</span>
         </dd>
-        <dt><span data-translate="bankAuditApp.groupRate.indexRate">Index Rate</span></dt>
+        <dt><span data-translate="bankAuditApp.groupRate.indexRate">Индекс</span></dt>
         <dd>
             <span>{{vm.groupRate.indexRate}}</span>
         </dd>
-        <dt><span data-translate="bankAuditApp.groupRate.rate">Rate</span></dt>
+        <dt><span data-translate="bankAuditApp.groupRate.rate">Оценка</span></dt>
         <dd>
             <span>{{vm.groupRate.rate}}</span>
         </dd>
-        <dt><span data-translate="bankAuditApp.groupRate.rateData">Rate Data</span></dt>
-        <dd>
-            <a ui-sref="rate-data-detail({id:vm.groupRate.rateData.id})">{{vm.groupRate.rateData.id}}</a>
-        </dd>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Номер</th>
+                <th>Частный показатель</th>
+                <th>Обязательность выполнения</th>
+                <th>Категория проверки</th>
+                <th>Документированность</th>
+                <th>Выполнение</th>
+                <th>Н/О</th>
+                <th>Оценка</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="localRate in vm.groupRate.localRates | orderBy:'id'">
+                <td>{{localRate.indexRate}}</td>
+                <td>{{localRate.question}}</td>
+                <td>{{localRate.necessary}}</td>
+                <td>{{localRate.category}}</td>
+                <td>
+                    <div class="form-group">
+                        <select class="form-control" name="documentation" ng-model="localRate.documentation"
+                                id="field_documentation"
+                                ng-if="localRate.documentation != 'NO_RATED'">
+                            <option value="YES" ng-if="localRate.category != 'THIRD'">Да</option>
+                            <option value="NO">Нет</option>
+                        </select>
+                        <div ng-if="localRate.documentation == 'NO_RATED'">Без оценки</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <select class="form-control" name="execution" ng-model="localRate.execution" id="field_execution"
+                                ng-if="!(localRate.execution == 'NO_RATED' || localRate.category == 'SECOND' || localRate.category == 'FOURTH')">
+                            <option value="YES">Да</option>
+                            <option value="ALMOST" ng-if="localRate.category != 'THIRD'">Почти</option>
+                            <option value="PARTIALLY">Частично</option>
+                            <option value="NO">Нет</option>
+                        </select>
+                        <div ng-if="localRate.execution == 'NO_RATED' || localRate.category == 'SECOND' || localRate.category == 'FOURTH'">Без оценки</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="checkbox" class="form-control" name="notRated" id="field_notRated"
+                               ng-model="localRate.notRated"
+                        />
+                    </div>
+                </td>
+                <td>{{vm.calcLocalRate(localRate, localRate.notRated)}}</td>
+            </tr>
+            </tbody>
+        </table>
     </dl>
 
     <button back type="submit"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" ng-click="vm.save()" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
     </button>
 
 
