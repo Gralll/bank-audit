@@ -9,7 +9,14 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.gralll.bankaudit.domain.enumeration.CheckCategory;
 
 import com.gralll.bankaudit.domain.enumeration.Documentation;
@@ -21,8 +28,10 @@ import com.gralll.bankaudit.domain.enumeration.Execution;
  */
 @Entity
 @Table(name = "local_rate")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "localrate")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.UUIDGenerator.class, property="@id")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class LocalRate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,8 +70,9 @@ public class LocalRate implements Serializable {
     @Column(name = "rate")
     private Double rate;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="GROUP_RATE_ID")
+    @JsonIdentityReference(alwaysAsId = true)
     private GroupRate groupRate;
 
     public Long getId() {

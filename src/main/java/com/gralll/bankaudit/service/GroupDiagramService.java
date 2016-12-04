@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class GroupDiagramService {
 
     private final Logger log = LoggerFactory.getLogger(GroupDiagramService.class);
-    
+
     @Inject
     private GroupDiagramRepository groupDiagramRepository;
 
@@ -41,17 +41,17 @@ public class GroupDiagramService {
     public GroupDiagram save(GroupDiagram groupDiagram) {
         log.debug("Request to save GroupDiagram : {}", groupDiagram);
         GroupDiagram result = groupDiagramRepository.save(groupDiagram);
-        groupDiagramSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the groupDiagrams.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<GroupDiagram> findAll(Pageable pageable) {
         log.debug("Request to get all GroupDiagrams");
         Page<GroupDiagram> result = groupDiagramRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class GroupDiagramService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public GroupDiagram findOne(Long id) {
         log.debug("Request to get GroupDiagram : {}", id);
         GroupDiagram groupDiagram = groupDiagramRepository.findOne(id);
@@ -79,7 +79,7 @@ public class GroupDiagramService {
     public void delete(Long id) {
         log.debug("Request to delete GroupDiagram : {}", id);
         groupDiagramRepository.delete(id);
-        groupDiagramSearchRepository.delete(id);
+
     }
 
     /**

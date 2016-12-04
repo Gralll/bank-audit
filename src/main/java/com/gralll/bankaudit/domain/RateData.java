@@ -1,5 +1,7 @@
 package com.gralll.bankaudit.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.*;
@@ -17,6 +19,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.ObjectIdResolver;
+import com.fasterxml.jackson.annotation.SimpleObjectIdResolver;
 import com.gralll.bankaudit.domain.enumeration.AuditProgress;
 
 import static org.hibernate.annotations.CascadeType.*;
@@ -26,8 +34,9 @@ import static org.hibernate.annotations.CascadeType.*;
  */
 @Entity
 @Table(name = "rate_data")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "ratedata")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, resolver = RateData.EntityIdResolver.class, property = "id", scope=RateData.class)
 public class RateData implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +52,8 @@ public class RateData implements Serializable {
 
     @OneToMany(mappedBy = "rateData", fetch=FetchType.EAGER)
     @Cascade(ALL)
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //@JsonManagedReference
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<GroupRate> groupRates = new HashSet<>();
 
     public Long getId() {
@@ -84,7 +94,7 @@ public class RateData implements Serializable {
 
     public RateData removeGroupRate(GroupRate groupRate) {
         groupRates.remove(groupRate);
-        groupRate.setRateData(null);
+        groupRate.setRateData((RateData) null);
         return this;
     }
 
@@ -118,5 +128,35 @@ public class RateData implements Serializable {
             "id=" + id +
             ", progress='" + progress + "'" +
             '}';
+    }
+
+    public static class EntityIdResolver implements ObjectIdResolver {
+        public EntityIdResolver() {
+        }
+
+        @Override
+        public void bindItem(
+            final ObjectIdGenerator.IdKey id,
+            final Object pojo) {
+
+        }
+
+        @Override
+        public Object resolveId(final ObjectIdGenerator.IdKey id) {
+
+            RateData rateData = new RateData();
+            rateData.setId((Long)id.key);
+            return rateData;
+        }
+
+        @Override
+        public ObjectIdResolver newForDeserialization(final Object context) {
+            return this;
+        }
+
+        @Override
+        public boolean canUseFor(final ObjectIdResolver resolverType) {
+            return false;
+        }
     }
 }

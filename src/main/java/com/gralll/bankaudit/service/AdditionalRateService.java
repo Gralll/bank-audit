@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class AdditionalRateService {
 
     private final Logger log = LoggerFactory.getLogger(AdditionalRateService.class);
-    
+
     @Inject
     private AdditionalRateRepository additionalRateRepository;
 
@@ -41,17 +41,17 @@ public class AdditionalRateService {
     public AdditionalRate save(AdditionalRate additionalRate) {
         log.debug("Request to save AdditionalRate : {}", additionalRate);
         AdditionalRate result = additionalRateRepository.save(additionalRate);
-        additionalRateSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the additionalRates.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<AdditionalRate> findAll(Pageable pageable) {
         log.debug("Request to get all AdditionalRates");
         Page<AdditionalRate> result = additionalRateRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class AdditionalRateService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public AdditionalRate findOne(Long id) {
         log.debug("Request to get AdditionalRate : {}", id);
         AdditionalRate additionalRate = additionalRateRepository.findOne(id);
@@ -79,7 +79,7 @@ public class AdditionalRateService {
     public void delete(Long id) {
         log.debug("Request to delete AdditionalRate : {}", id);
         additionalRateRepository.delete(id);
-        additionalRateSearchRepository.delete(id);
+
     }
 
     /**

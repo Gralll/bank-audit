@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class RateDataService {
 
     private final Logger log = LoggerFactory.getLogger(RateDataService.class);
-    
+
     @Inject
     private RateDataRepository rateDataRepository;
 
@@ -40,18 +40,20 @@ public class RateDataService {
      */
     public RateData save(RateData rateData) {
         log.debug("Request to save RateData : {}", rateData);
+        rateData.getGroupRates().forEach(groupRate -> log.debug("{}{}", groupRate.toString(), groupRate.getRateData()));
         RateData result = rateDataRepository.save(rateData);
-        rateDataSearchRepository.save(result);
+        result.getGroupRates().forEach(groupRate -> log.debug("{}{}", groupRate.toString(), groupRate.getRateData()));
+
         return result;
     }
 
     /**
      *  Get all the rateData.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<RateData> findAll(Pageable pageable) {
         log.debug("Request to get all RateData");
         Page<RateData> result = rateDataRepository.findAll(pageable);
@@ -64,7 +66,7 @@ public class RateDataService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public RateData findOne(Long id) {
         log.debug("Request to get RateData : {}", id);
         RateData rateData = rateDataRepository.findOne(id);
@@ -79,7 +81,7 @@ public class RateDataService {
     public void delete(Long id) {
         log.debug("Request to delete RateData : {}", id);
         rateDataRepository.delete(id);
-        rateDataSearchRepository.delete(id);
+
     }
 
     /**

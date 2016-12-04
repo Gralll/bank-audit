@@ -1,6 +1,17 @@
 package com.gralll.bankaudit.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.ObjectIdResolver;
+import com.fasterxml.jackson.annotation.SimpleObjectIdResolver;
 
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
@@ -23,8 +34,9 @@ import static org.hibernate.annotations.CascadeType.*;
  */
 @Entity
 @Table(name = "group_rate")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "grouprate")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id",resolver = GroupRate.EntityIdResolver.class, scope=GroupRate.class)
 public class GroupRate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,13 +60,14 @@ public class GroupRate implements Serializable {
     @Column(name = "rate")
     private Double rate;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="RATE_DATA_ID")
+    @JsonIdentityReference(alwaysAsId = true)
     private RateData rateData;
 
     @OneToMany(mappedBy = "groupRate", fetch=FetchType.EAGER)
     @Cascade(ALL)
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<LocalRate> localRates = new HashSet<>();
 
     public Long getId() {
@@ -183,5 +196,34 @@ public class GroupRate implements Serializable {
             ", indexRate='" + indexRate + "'" +
             ", rate='" + rate + "'" +
             '}';
+    }
+
+    public static class EntityIdResolver implements ObjectIdResolver {
+        public EntityIdResolver() {
+        }
+
+        @Override
+        public void bindItem(
+            final ObjectIdGenerator.IdKey id,
+            final Object pojo) {
+
+        }
+
+        @Override
+        public Object resolveId(final ObjectIdGenerator.IdKey id) {
+            GroupRate groupRate = new GroupRate();
+            groupRate.setId((Long)id.key);
+            return groupRate;
+        }
+
+        @Override
+        public ObjectIdResolver newForDeserialization(final Object context) {
+            return this;
+        }
+
+        @Override
+        public boolean canUseFor(final ObjectIdResolver resolverType) {
+            return false;
+        }
     }
 }

@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class LocalRateService {
 
     private final Logger log = LoggerFactory.getLogger(LocalRateService.class);
-    
+
     @Inject
     private LocalRateRepository localRateRepository;
 
@@ -41,17 +41,17 @@ public class LocalRateService {
     public LocalRate save(LocalRate localRate) {
         log.debug("Request to save LocalRate : {}", localRate);
         LocalRate result = localRateRepository.save(localRate);
-        localRateSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the localRates.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<LocalRate> findAll(Pageable pageable) {
         log.debug("Request to get all LocalRates");
         Page<LocalRate> result = localRateRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class LocalRateService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public LocalRate findOne(Long id) {
         log.debug("Request to get LocalRate : {}", id);
         LocalRate localRate = localRateRepository.findOne(id);
@@ -79,7 +79,7 @@ public class LocalRateService {
     public void delete(Long id) {
         log.debug("Request to delete LocalRate : {}", id);
         localRateRepository.delete(id);
-        localRateSearchRepository.delete(id);
+
     }
 
     /**

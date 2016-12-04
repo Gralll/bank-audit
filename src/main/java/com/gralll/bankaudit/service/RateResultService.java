@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class RateResultService {
 
     private final Logger log = LoggerFactory.getLogger(RateResultService.class);
-    
+
     @Inject
     private RateResultRepository rateResultRepository;
 
@@ -41,17 +41,17 @@ public class RateResultService {
     public RateResult save(RateResult rateResult) {
         log.debug("Request to save RateResult : {}", rateResult);
         RateResult result = rateResultRepository.save(rateResult);
-        rateResultSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the rateResults.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<RateResult> findAll(Pageable pageable) {
         log.debug("Request to get all RateResults");
         Page<RateResult> result = rateResultRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class RateResultService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public RateResult findOne(Long id) {
         log.debug("Request to get RateResult : {}", id);
         RateResult rateResult = rateResultRepository.findOne(id);
@@ -79,7 +79,7 @@ public class RateResultService {
     public void delete(Long id) {
         log.debug("Request to delete RateResult : {}", id);
         rateResultRepository.delete(id);
-        rateResultSearchRepository.delete(id);
+
     }
 
     /**

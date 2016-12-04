@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class FinalRateService {
 
     private final Logger log = LoggerFactory.getLogger(FinalRateService.class);
-    
+
     @Inject
     private FinalRateRepository finalRateRepository;
 
@@ -41,17 +41,17 @@ public class FinalRateService {
     public FinalRate save(FinalRate finalRate) {
         log.debug("Request to save FinalRate : {}", finalRate);
         FinalRate result = finalRateRepository.save(finalRate);
-        finalRateSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the finalRates.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<FinalRate> findAll(Pageable pageable) {
         log.debug("Request to get all FinalRates");
         Page<FinalRate> result = finalRateRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class FinalRateService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public FinalRate findOne(Long id) {
         log.debug("Request to get FinalRate : {}", id);
         FinalRate finalRate = finalRateRepository.findOne(id);
@@ -79,7 +79,7 @@ public class FinalRateService {
     public void delete(Long id) {
         log.debug("Request to delete FinalRate : {}", id);
         finalRateRepository.delete(id);
-        finalRateSearchRepository.delete(id);
+
     }
 
     /**

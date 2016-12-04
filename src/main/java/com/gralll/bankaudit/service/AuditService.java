@@ -64,7 +64,7 @@ public class AuditService {
             audit.setRateData(rateDataGenerator.generateRateData());
         }
         Audit result = auditRepository.save(audit);
-        auditSearchRepository.save(result);
+
         return result;
     }
 
@@ -102,7 +102,7 @@ public class AuditService {
     public void delete(Long id) {
         log.debug("Request to delete Audit : {}", id);
         auditRepository.delete(id);
-        auditSearchRepository.delete(id);
+
     }
 
     /**

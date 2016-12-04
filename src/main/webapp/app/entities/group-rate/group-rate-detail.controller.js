@@ -7,7 +7,7 @@
 
     GroupRateDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'GroupRate', 'RateData', 'LocalRate'];
 
-    function GroupRateDetailController($scope, $rootScope, $stateParams, previousState, entity, GroupRate, RateData, LocalRate) {
+    function GroupRateDetailController($scope, $rootScope, $stateParams, previousState, entity, GroupRate) {
         var vm = this;
 
         vm.groupRate = entity;
@@ -16,8 +16,28 @@
         var unsubscribe = $rootScope.$on('bankAuditApp:groupRateUpdate', function(event, result) {
             vm.groupRate = result;
         });
+        $scope.$on('$destroy', unsubscribe);
 
-        this.calcLocalRate = function(localRate, notRated) {
+        vm.save = function save () {
+            vm.isSaving = true;
+            if (vm.groupRate.id !== null) {
+                GroupRate.update(vm.groupRate, onSaveSuccess, onSaveError);
+            } else {
+                GroupRate.save(vm.groupRate, onSaveSuccess, onSaveError);
+            }
+        }
+
+        function onSaveSuccess (result) {
+            $scope.$emit('bankAuditApp:groupRateUpdate', result);
+            //$uibModalInstance.close(result);
+            vm.isSaving = false;
+        }
+
+        function onSaveError () {
+            vm.isSaving = false;
+        }
+
+        vm.calcLocalRate = function(localRate, notRated) {
             if (notRated == true) {
                 localRate.rate = null;
             } else {
@@ -73,39 +93,5 @@
 
             return localRate.rate;
         };
-
-        $scope.$on('$destroy', unsubscribe);
-
-        vm.clear = clear;
-        vm.save = save;
-        vm.ratedata = RateData.query();
-        vm.localrates = LocalRate.query();
-
-        $timeout(function (){
-            angular.element('.form-group:eq(1)>input').focus();
-        });
-
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function save () {
-            vm.isSaving = true;
-            if (vm.groupRate.id !== null) {
-                GroupRate.update(vm.groupRate, onSaveSuccess, onSaveError);
-            } else {
-                GroupRate.save(vm.groupRate, onSaveSuccess, onSaveError);
-            }
-        }
-
-        function onSaveSuccess (result) {
-            $scope.$emit('bankAuditApp:groupRateUpdate', result);
-            $uibModalInstance.close(result);
-            vm.isSaving = false;
-        }
-
-        function onSaveError () {
-            vm.isSaving = false;
-        }
     }
 })();

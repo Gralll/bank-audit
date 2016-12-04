@@ -25,7 +25,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class EvDiagramService {
 
     private final Logger log = LoggerFactory.getLogger(EvDiagramService.class);
-    
+
     @Inject
     private EvDiagramRepository evDiagramRepository;
 
@@ -41,17 +41,17 @@ public class EvDiagramService {
     public EvDiagram save(EvDiagram evDiagram) {
         log.debug("Request to save EvDiagram : {}", evDiagram);
         EvDiagram result = evDiagramRepository.save(evDiagram);
-        evDiagramSearchRepository.save(result);
+
         return result;
     }
 
     /**
      *  Get all the evDiagrams.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<EvDiagram> findAll(Pageable pageable) {
         log.debug("Request to get all EvDiagrams");
         Page<EvDiagram> result = evDiagramRepository.findAll(pageable);
@@ -64,7 +64,7 @@ public class EvDiagramService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public EvDiagram findOne(Long id) {
         log.debug("Request to get EvDiagram : {}", id);
         EvDiagram evDiagram = evDiagramRepository.findOne(id);
@@ -79,7 +79,7 @@ public class EvDiagramService {
     public void delete(Long id) {
         log.debug("Request to delete EvDiagram : {}", id);
         evDiagramRepository.delete(id);
-        evDiagramSearchRepository.delete(id);
+
     }
 
     /**

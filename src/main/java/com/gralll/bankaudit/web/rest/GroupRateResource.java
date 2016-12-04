@@ -2,7 +2,9 @@ package com.gralll.bankaudit.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.gralll.bankaudit.domain.GroupRate;
+import com.gralll.bankaudit.domain.RateData;
 import com.gralll.bankaudit.service.GroupRateService;
+import com.gralll.bankaudit.service.RateDataService;
 import com.gralll.bankaudit.web.rest.util.HeaderUtil;
 import com.gralll.bankaudit.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -34,9 +36,12 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class GroupRateResource {
 
     private final Logger log = LoggerFactory.getLogger(GroupRateResource.class);
-        
+
     @Inject
     private GroupRateService groupRateService;
+
+    @Inject
+    private RateDataService rateDataService;
 
     /**
      * POST  /group-rates : Create a new groupRate.
@@ -78,7 +83,9 @@ public class GroupRateResource {
         if (groupRate.getId() == null) {
             return createGroupRate(groupRate);
         }
+        groupRate.getLocalRates().stream().forEach(local -> log.debug(local.getIndexRate() + local.getRate()));
         GroupRate result = groupRateService.save(groupRate);
+        result.getLocalRates().stream().forEach(local -> log.debug(local.getIndexRate() + local.getRate()));
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("groupRate", groupRate.getId().toString()))
             .body(result);
@@ -143,7 +150,7 @@ public class GroupRateResource {
      * SEARCH  /_search/group-rates?query=:query : search for the groupRate corresponding
      * to the query.
      *
-     * @param query the query of the groupRate search 
+     * @param query the query of the groupRate search
      * @param pageable the pagination information
      * @return the result of the search
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
