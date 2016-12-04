@@ -20,19 +20,15 @@
         <createTable tableName="rate_result">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>            <column name="rate_matrix_id" type="bigint">
-                <constraints unique="true" nullable="true" />
             </column>            <column name="additional_rate_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>            <column name="final_rate_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>            <column name="ev_diagram_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="group_diagram_id" type="bigint">
-                <constraints unique="true" nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

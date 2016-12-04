@@ -8,12 +8,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 /**
  * A GroupDiagram.
  */
 @Entity
 @Table(name = "group_diagram")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "groupdiagram")
 public class GroupDiagram implements Serializable {
 
@@ -31,6 +33,11 @@ public class GroupDiagram implements Serializable {
 
     @Column(name = "level")
     private Integer level;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="RATE_RESULT_ID")
+    @JsonIdentityReference(alwaysAsId = true)
+    private RateResult rateResult;
 
     public Long getId() {
         return id;
@@ -77,6 +84,19 @@ public class GroupDiagram implements Serializable {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public RateResult getRateResult() {
+        return rateResult;
+    }
+
+    public GroupDiagram rateResult(RateResult rateResult) {
+        this.rateResult = rateResult;
+        return this;
+    }
+
+    public void setRateResult(RateResult rateResult) {
+        this.rateResult = rateResult;
     }
 
     @Override

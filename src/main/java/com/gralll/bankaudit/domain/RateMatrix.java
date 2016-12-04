@@ -8,12 +8,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 /**
  * A RateMatrix.
  */
 @Entity
 @Table(name = "rate_matrix")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "ratematrix")
 public class RateMatrix implements Serializable {
 
@@ -31,6 +33,11 @@ public class RateMatrix implements Serializable {
 
     @Column(name = "zero")
     private Integer zero;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="RATE_RESULT_ID")
+    @JsonIdentityReference(alwaysAsId = true)
+    private RateResult rateResult;
 
     public Long getId() {
         return id;
@@ -77,6 +84,19 @@ public class RateMatrix implements Serializable {
 
     public void setZero(Integer zero) {
         this.zero = zero;
+    }
+
+    public RateResult getRateResult() {
+        return rateResult;
+    }
+
+    public RateMatrix rateResult(RateResult rateResult) {
+        this.rateResult = rateResult;
+        return this;
+    }
+
+    public void setRateResult(RateResult rateResult) {
+        this.rateResult = rateResult;
     }
 
     @Override

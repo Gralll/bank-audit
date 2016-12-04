@@ -23,6 +23,13 @@
             ]
         },
         {
+            "fieldName": "category",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "indexRate",
             "fieldType": "String",
             "fieldValidateRules": [

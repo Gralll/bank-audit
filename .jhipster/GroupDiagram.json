@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "rateResult",
+            "otherEntityName": "rateResult",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "indexRate",

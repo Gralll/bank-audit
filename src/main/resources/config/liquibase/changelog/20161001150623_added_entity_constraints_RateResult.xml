@@ -7,12 +7,6 @@
         Added the constraints for entity RateResult.
     -->
     <changeSet id="20161001150623-2" author="jhipster">
-        
-        <addForeignKeyConstraint baseColumnNames="rate_matrix_id"
-                                 baseTableName="rate_result"
-                                 constraintName="fk_rate_result_rate_matrix_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="rate_matrix"/>
 
         <addForeignKeyConstraint baseColumnNames="additional_rate_id"
                                  baseTableName="rate_result"
@@ -31,12 +25,6 @@
                                  constraintName="fk_rate_result_ev_diagram_id"
                                  referencedColumnNames="id"
                                  referencedTableName="ev_diagram"/>
-
-        <addForeignKeyConstraint baseColumnNames="group_diagram_id"
-                                 baseTableName="rate_result"
-                                 constraintName="fk_rate_result_group_diagram_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="group_diagram"/>
 
     </changeSet>
 </databaseChangeLog>

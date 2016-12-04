@@ -2,11 +2,9 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "one-to-many",
             "relationshipName": "rateMatrix",
             "otherEntityName": "rateMatrix",
-            "otherEntityField": "id",
-            "ownerSide": true,
             "otherEntityRelationshipName": "rateResult"
         },
         {
@@ -34,12 +32,11 @@
             "otherEntityRelationshipName": "rateResult"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "one-to-many",
             "relationshipName": "groupDiagram",
             "otherEntityName": "groupDiagram",
-            "otherEntityField": "id",
-            "ownerSide": true,
             "otherEntityRelationshipName": "rateResult"
+
         }
     ],
     "fields": [],

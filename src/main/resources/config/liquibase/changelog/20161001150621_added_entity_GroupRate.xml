@@ -24,21 +24,25 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="index_rate" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
+
             <column name="rate" type="double">
                 <constraints nullable="true" />
             </column>
-            
+
+            <column name="category" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="rate_data_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>
