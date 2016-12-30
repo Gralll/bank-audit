@@ -1,12 +1,13 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <span class="hipster img-responsive img-rounded"></span>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h1 data-translate="home.title">Welcome, User!</h1>
             <p class="lead" data-translate="home.subtitle">This is BankAudit homepage</p>
-
+            <p>С помощью нашего сервиса вы можете быстро и комфортно провести как аудит,
+                так и самооценку банковской организации по СТО БР ИББС 2014</p>
             <div ng-switch="vm.isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".

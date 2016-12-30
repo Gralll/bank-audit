@@ -1,19 +1,19 @@
 <div>
-    <h2><span data-translate="bankAuditApp.groupRate.detail.title">Групповая оценка</span> {{vm.groupRate.id}}</h2>
+    <h2><span>Групповой показатель М12 "Определение/коррекция области действия СОИБ"</span> </h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="bankAuditApp.groupRate.name">Название</span></dt>
+        <dt><span >Название</span></dt>
         <dd>
-            <span>{{vm.groupRate.name}}</span>
+            <span>{{vm.groupRateEx.name}}</span>
         </dd>
-        <dt><span data-translate="bankAuditApp.groupRate.indexRate">Индекс</span></dt>
+        <dt><span>Индекс</span></dt>
         <dd>
-            <span>{{vm.groupRate.indexRate}}</span>
+            <span>{{vm.groupRateEx.indexRate}}</span>
         </dd>
-        <dt><span data-translate="bankAuditApp.groupRate.rate">Оценка</span></dt>
+        <dt><span>Оценка</span></dt>
         <dd>
-            <span>{{vm.groupRate.rate}}</span>
+            <span>{{vm.groupRateEx.rate}}</span>
         </dd>
 
         <table class="table table-striped">
@@ -25,29 +25,31 @@
                 <th>Категория проверки</th>
                 <th>Документированность</th>
                 <th>Выполнение</th>
-                <th>Н/О</th>
+                <th style="width: 40px">Н/О</th>
                 <th>Оценка</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="localRate in vm.groupRate.localRates | orderBy:'id'">
-                <td>{{localRate.indexRate}}</td>
+            <tr ng-repeat="localRate in vm.groupRateEx.localRates | orderBy:'id'">
+                <td style="vertical-align: middle">{{localRate.indexRate}}</td>
                 <td>{{localRate.question}}</td>
-                <td>{{localRate.necessary}}</td>
-                <td>{{localRate.category}}</td>
-                <td>
-                    <div class="form-group">
+                <td style="vertical-align: middle">{{localRate.necessary}}</td>
+                <td style="vertical-align: middle">{{localRate.category == "FIRST" ? 1
+                    : localRate.category == "SECOND" ? 2
+                    : localRate.category == "THIRD" ? 3 : 4}}</td>
+                <td style="vertical-align: middle">
+                    <div class="form-group" ng-if="localRate.category != 'THIRD'">
                         <select class="form-control" name="documentation" ng-model="localRate.documentation"
                                 id="field_documentation"
                                 ng-if="localRate.documentation != 'NO_RATED'">
-                            <option value="YES" ng-if="localRate.category != 'THIRD'">Да</option>
+                            <option value="YES">Да</option>
                             <option value="NO">Нет</option>
                         </select>
                         <div ng-if="localRate.documentation == 'NO_RATED'">Без оценки</div>
                     </div>
                 </td>
-                <td>
-                    <div class="form-group">
+                <td style="vertical-align: middle">
+                    <div class="form-group" ng-if="localRate.category != 'SECOND' && localRate.category != 'FOURTH'">
                         <select class="form-control" name="execution" ng-model="localRate.execution" id="field_execution"
                                 ng-if="!(localRate.execution == 'NO_RATED' || localRate.category == 'SECOND' || localRate.category == 'FOURTH')">
                             <option value="YES">Да</option>
@@ -58,14 +60,14 @@
                         <div ng-if="localRate.execution == 'NO_RATED' || localRate.category == 'SECOND' || localRate.category == 'FOURTH'">Без оценки</div>
                     </div>
                 </td>
-                <td>
+                <td style="vertical-align: middle">
                     <div class="form-group">
                         <input type="checkbox" class="form-control" name="notRated" id="field_notRated"
                                ng-model="localRate.notRated"
                         />
                     </div>
                 </td>
-                <td>{{vm.calcLocalRate(localRate, localRate.notRated)}}</td>
+                <td style="vertical-align: middle">{{vm.calcLocalRate(localRate, localRate.notRated)}}</td>
             </tr>
             </tbody>
         </table>
@@ -81,7 +83,7 @@
     </button>
 
 
-    <button type="button" ui-sref="group-rate-detail.edit({id:vm.groupRate.id})" class="btn btn-primary">
+    <button type="button" ui-sref="group-rate-detail.edit({id:vm.groupRateEx.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>

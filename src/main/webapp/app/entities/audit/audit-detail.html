@@ -7,7 +7,7 @@
         <span style="font-size: medium" data-translate="bankAuditApp.audit.progress">Audit progress</span>
         <div class="progress" ng-if="true">
             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                <span>80% Complete (success)</span>
+                <span>80% Завершено</span>
             </div>
         </div>
         <div class="progress" ng-if="false">
@@ -52,26 +52,91 @@
             <dd>
                 <span>{{vm.audit.endLevel}}</span>
             </dd>
-            <dt><span data-translate="bankAuditApp.audit.rateData">Rate Data</span></dt>
-            <dd>
-                <a ui-sref="rate-data-detail({id:vm.audit.rateData.id})">{{vm.audit.rateData.id}}</a>
-            </dd>
-            <dt><span data-translate="bankAuditApp.audit.result">Result</span></dt>
-            <dd>
-                <a ui-sref="rate-result-detail({id:vm.audit.result.id})">{{vm.audit.result.id}}</a>
-            </dd>
-        </dl>
+        </dl><br/><br/><br/><br/>
     </div>
-    <ul class="pager">
-        <li><a href="" ng-click="vm.getRates()">Оценки</a></li>
-        <li><a href="" ng-click="vm.getResults()">Результаты</a></li>
-    </ul>
 
-    <div class="panel panel-primary" ng-show="vm.isVisibleRates">
-        <div class="panel-heading" ng-click="isVisibleRateTU = !isVisibleRateTU">
+    <div>
+    <ul class="pager">
+        <li><a style="padding: 5px 100px; background-color: #d9edf7" href="#" ng-click="vm.getRates()">Оценки</a></li>
+        <li><a style="padding: 5px 100px; background-color: #d9edf7" href="#" ng-click="vm.getResults()">Результаты</a></li>
+    </ul>
+    </div>
+
+    <div class="panel panel-primary" ng-show="isVisibleRates">
+        <div class="panel-heading" style="background-color: #5daef5">
+            Диаграммы
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{vm.diagramm1}}</td>
+                    <td>{{vm.diagramm2}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="panel panel-info" ng-show="isVisibleRates">
+        <div class="panel-heading" style="background-color: #74ec66">
+            Диаграммы
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{vm.diagramm1}}</td>
+                    <td>{{vm.diagramm2}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="panel panel-success" ng-show="isVisibleRates">
+        <div class="panel-heading" style="background-color: #eadf50">
+            Диаграммы
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
+                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{vm.diagramm1}}</td>
+                    <td>{{vm.diagramm2}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+    <div class="panel panel-primary" ng-show="isVisibleRates">
+        <div class="panel-heading" style="background-color: #5daef5" ng-click="isVisibleRateTU = !isVisibleRateTU">
             Оценка текущего уровня информационной безопасности
         </div>
-        <div class="panel-body" ng-show="isVisibleRateTU">
+        <div class="panel-body" ng-show="vm.isVisibleRateTU">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -80,6 +145,68 @@
                         <th>Результат</th>
                         <th></th>
                     </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="groupRate in vm.auditOne.groupRates  | filter:{category:'TU'} | orderBy:'id'">
+                    <td><a ui-sref="group-rate-detail({id:groupRate.id})">{{groupRate.indexRate}} {{groupRate.name}}</a></td>
+                    <td>{{vm.getGroupRateProgress(groupRate)}}</td>
+                    <td>{{groupRate.rate}}</td>
+                    <!--<div ng-repeat="localRate in groupRate.localRates | orderBy:'id' ">
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                    </div>-->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="panel panel-info" ng-show="vm.isVisibleRates">
+        <div class="panel-heading" style="background-color: #74ec66" ng-click="vm.isVisibleRateMI = !vm.isVisibleRateMI">
+            Оценка менеджмента информационной безопасности
+        </div>
+        <div class="panel-body" ng-show="vm.isVisibleRateMI">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Групповая оценка</th>
+                    <th>Прогресс</th>
+                    <th>Результат</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="groupRate in vm.auditOne.groupRates  | filter:{category:'MI'} | orderBy:'id'">
+                    <td><a ui-sref="group-rate-detail({id:groupRate.id})">{{groupRate.indexRate}} {{groupRate.name}}</a></td>
+                    <td>{{vm.getGroupRateProgress(groupRate)}}</td>
+                    <td>{{groupRate.rate}}</td>
+                    <!--<div ng-repeat="localRate in groupRate.localRates | orderBy:'id' ">
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                        <td>{{localRate.indexRate}}{{localRate.question}}</td>
+                    </div>-->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="panel panel-success" ng-show="vm.isVisibleRates">
+        <div class="panel-heading" style="background-color: #eadf50" ng-click="isVisibleRatePP = !isVisibleRatePP">
+            Оценка уровня осознания информационной безопасности
+        </div>
+        <div class="panel-body" ng-show="vm.isVisibleRatePP">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Групповая оценка</th>
+                    <th>Прогресс</th>
+                    <th>Результат</th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="groupRate in vm.audit.rateData.groupRates  | filter:{category:''} | orderBy:'id'">
