@@ -71,13 +71,35 @@
                 <thead>
                 <tr>
                     <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <canvas  id="polar-area" class="chart chart-polar-area"
+                                chart-data="data" height="150px" chart-labels="labels" chart-colors="colors" chart-options="options">
+                        </canvas>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
                     <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{vm.diagramm1}}</td>
-                    <td>{{vm.diagramm2}}</td>
+                    <td>
+                        <canvas id="polar-area" class="chart chart-polar-area"
+                                chart-data="data2"  height="150px"  chart-labels="labels2" chart-colors="colors2" chart-options="options2">
+                        </canvas>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -87,20 +109,28 @@
 
     <div class="panel panel-info" ng-show="isVisibleRates">
         <div class="panel-heading" style="background-color: #74ec66">
-            Диаграммы
+            Матрица оценок групповых показателей
         </div>
         <div class="panel-body">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
-                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
+                    <th>Групповой показатель</th>
+                    <th>Оценка</th>
+                    <th>Количество нулевых оценок</th>
+                    <th>Итоговый уровень</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>{{vm.diagramm1}}</td>
-                    <td>{{vm.diagramm2}}</td>
+                <tr ng-repeat="groupRate in vm.auditOne.groupRates | orderBy:'id'">
+                    <td>{{groupRate.indexRate}} {{groupRate.name}}</td>
+                    <td>{{groupRate.rate}}</td>
+                    <td>{{vm.getRandomNulls()}}</td>
+                    <td>{{groupRate.rate >= 0.95 ? 5
+                        : groupRate.rate >= 0.85 ? 4
+                        : groupRate.rate >= 0.7 ? 3
+                        : groupRate.rate >= 0.5 ? 2
+                        : groupRate.rate >= 0.25 ? 1 : 0}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -110,20 +140,48 @@
 
     <div class="panel panel-success" ng-show="isVisibleRates">
         <div class="panel-heading" style="background-color: #eadf50">
-            Диаграммы
+            Результирующие оценки
         </div>
         <div class="panel-body">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014</th>
-                    <th>Диаграмма соответствия ИБ организации требованиям СТО БР ИББС-1.0-2014. Оценки EV1, EV2, EV3.</th>
+                    <th>Итоговые оценки</th>
+                    <th>Вспомогательные оценки</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{vm.diagramm1}}</td>
-                    <td>{{vm.diagramm2}}</td>
+                    <td>EVоопд = 0.78</td>
+                    <td>EV1 = 0.78</td>
+                </tr>
+                <tr>
+                    <td>EV1озпд = 0.81</td>
+                    <td>EVбптп = 0.79</td>
+                </tr>
+                <tr>
+                    <td>EVмб = 0.85</td>
+                    <td>EVбитп = 0.83</td>
+                </tr>
+                <tr>
+                    <td>R = 0.75</td>
+                    <td>EV1озпд = 0.81</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>EV2озпд = 0.79</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>EVоопд = 0.78</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>EV2 = 0.76</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>EV3 = 0.75</td>
                 </tr>
                 </tbody>
             </table>
