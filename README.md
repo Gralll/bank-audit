@@ -1,6 +1,7 @@
-# bankAudit
+# BankAudit
+The application was written to provide possibility of making bank audit using Bank of Russia standart.
 
-This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
+For skeleton generation JHipster was used.
 
 ## Development
 
